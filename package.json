@@ -1,0 +1,22 @@
+{
+  "name": "project-2_wayfarer_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paristechprofile/project-2_wayfarer_backend.git"
+  },
+  "author": "fantastic 4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paristechprofile/project-2_wayfarer_backend/issues"
+  },
+  "homepage": "https://github.com/paristechprofile/project-2_wayfarer_backend#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
