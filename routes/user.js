@@ -1,7 +1,7 @@
 const 
     express = require('express'),
     router = express.Router(),
-    // jwt = require('jsonwebtoken'),
+    jwt = require('jsonwebtoken'),
     controllers = require('../controllers');
     
 //get all users
@@ -29,7 +29,7 @@ router.use((req, res, next) => {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken; 
-        let verified = jwt.verify(req.token, 'fantastic4');
+        let verified = jwt.verify(req.token, 'fantastic');
         console.log('here is the verified', verified)
         req.userId = verified._id
         next();

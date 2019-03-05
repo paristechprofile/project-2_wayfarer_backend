@@ -1,14 +1,14 @@
 const 
     bcrypt = require('bcrypt'),
     db = require('../models'),
-    jwt = require('jsonwebtoken')
+    jwt = require('jsonwebtoken');
 
 // router.get('/users', controllers.user.findAll) //write function to return json of all users for admin
 
 // //get one user
 // router.get('/', controllers.user.findById)
 
-// //create user
+//create user
 // router.post('/signup', controllers.user.signup)
 
 // //edit user profile
@@ -67,7 +67,7 @@ module.exports = {
                     
                     jwt.sign(
                         user,
-                        "fantastic4",
+                        "fantastic",
                         {
                         // its good practice to have an expiration amount for jwt tokens.
                         expiresIn: "1h"
@@ -125,7 +125,7 @@ module.exports = {
         //         } 
         //         jwt.sign(
         //             user,
-        //             "waffles",
+        //             "fantastic4",
         //             {
         //             // its good practice to have an expiration amount for jwt tokens.
         //             expiresIn: "1h"
