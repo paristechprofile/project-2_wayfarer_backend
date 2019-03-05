@@ -1,14 +1,22 @@
 [
     {
-        "name": "Paris"
+        "username": "ptaylor",
+        "pw": "fantastic4",
+        "firstName": "Paris"
     },
     {
-        "name": "JJ"
+        "username": "JJ",
+        "pw": "123",
+        "firstName": "John"
     },
     {
-        "name": "Tiffany"
+        "username": "tteaze",
+        "pw": "123",
+        "firstName": "Tiffany"
     },
     {
-        "name": "Nassima"
+        "username": "nassima",
+        "pw": "cammelCaseRules",
+        "firstName": "Nassima"
     }
 ]
