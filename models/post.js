@@ -1,6 +1,10 @@
-const mongoose = require('mongoose');
+const 
+    mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+    User = require('./User');
+    City = require('./City');
 
-const PostSchema = new mongoose.Schema({
+const PostSchema = new Schema({
     date: Date,
     author: {
         type: Schema.Types.ObjectId,

@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/wayfarer',
     { useNewUrlParser: true })
 
 module.exports = {
-    city: require('./city'),
-    post: require('./post'),
-    user: require('./user')
+    city: require('./City'),
+    post: require('./Post'),
+    user: require('./User')
 }

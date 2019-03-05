@@ -1,10 +1,25 @@
 const 
-  bcrypt = require('bcrypt'),
-  db = require('../models'),
-  jwt = require('jsonwebtoken')
-/* 1. add in crud functionality */
+    bcrypt = require('bcrypt'),
+    db = require('../models'),
+    jwt = require('jsonwebtoken')
+
+// router.get('/users', controllers.user.findAll) //write function to return json of all users for admin
+
+// //get one user
+// router.get('/', controllers.user.findById)
+
+// //create user
+// router.post('/signup', controllers.user.signup)
+
+// //edit user profile
+// router.put('/user/:id', controllers.user.editProfile)
+
+//delete user
+// router.delete('/user/:id', controllers.user.delete)
+
+  /* 1. add in crud functionality */
 module.exports = {
-    show: (req,res)=>{
+    findById: (req,res)=>{
         console.log('trigger Show', req.userId)
         if(req.userId){
             db.User.findById(req.userId, (err, foundUser)=>{
@@ -13,7 +28,7 @@ module.exports = {
         } else {
             res.json('No user Id provided')
         }
-        },
+    },
 
     /* 2. copied the below from git hub */
         signup : (req, res) => {

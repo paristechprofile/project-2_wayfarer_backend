@@ -11,12 +11,12 @@
     },
     {
         "username": "tteaze",
-        "pw": "123",
+        "pw": "password",
         "firstName": "Tiffany"
     },
     {
         "username": "nassima",
-        "pw": "cammelCaseRules",
+        "pw": "123",
         "firstName": "Nassima"
     }
 ]
