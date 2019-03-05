@@ -33,41 +33,41 @@ module.exports = {
     /* 2. copied the below from git hub */
         signup : (req, res) => {
         console.log(req.body);
-        // Check to see if email is already in db
-        db.User.find({email: req.body.email})
+        // Check to see if username is already in db
+        db.User.find({username: req.body.username})
             .exec()
             .then( user => {
-            // if a user is found with that email
+            // if a user is found with that username
             if (user.length >= 1) {
-                // send an error and let the user know that the email already exists
+                // send an error and let the user know that the username already exists
                 return res.status(409).json({
-                message: "email already exists"
+                message: "username already exists"
                 })
-            // if we don't have this user's email in our db, lets get them set up!
+            // if we don't have this user's username in our db, lets get them set up!
             } else {
-                // lets hash our plaintext password
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                // lets hash our plaintext pw
+                bcrypt.hash(req.body.pw, 10, (err, hash) => {
                 if(err){ 
                     console.log("hashing error:", err);
                     res.status(200).json({error: err})
-                // we now have a successful hashed password
+                // we now have a successful hashed pw
                 } else {
-                    // we are creating a User object with their email address and OUR hashed password
+                    // we are creating a User object with their username and OUR hashed pw
                     db.User.create({
-                    email: req.body.email,
-                    password: hash
+                    username: req.body.username,
+                    pw: hash
                     }, (err, newUser) => {
                         console.log('here is the result',newUser)
                     // if(err){ return res.status(500).json({err})}
                     // we send our new data back to user or whatever you want to do.
                     let user ={
-                        email: newUser.email,
+                        username: newUser.username,
                         _id: newUser._id
                     } 
                     
                     jwt.sign(
                         user,
-                        "waffles",
+                        "fantastic4",
                         {
                         // its good practice to have an expiration amount for jwt tokens.
                         expiresIn: "1h"
@@ -90,66 +90,74 @@ module.exports = {
             res.status(500).json({err})
             })
         },
-        login: (req, res) => {
-        console.log("LOGIN CALLED");
-        // find the user in our user db
-        console.log("body", req.body)
-        db.User.find({email: req.body.email})
-            .select('+password')
-            .exec()
-            // if we have found a user
-            .then( users => {
-            // if there is not email in our db
-            console.log("USERS: ", users);
-            if(users.length < 1) {
-                return res.status(401).json({
-                message: "Email/Password incorrect"
-                })
-            }
-            // we have an email in our db that matches what they gave us
-            // now we have to compare their hashed password to what we have in our db
-            console.log("body", req.body);
-            console.log("hash", users[0].password);
-            bcrypt.compare(req.body.password, users[0].password, (err, match) => {
-                console.log(match)
-                // If the compare function breaks, let them know
-                if(err){console.log(err);return res.status(500).json({err})}
-                // If match is true (their password matches our db password)
-                if(match){
-                console.log("MATCH: ", match)
-                // create a json web token
+        // login: (req, res) => {
+        // console.log("LOGIN CALLED");
+        // // find the user in our user db
+        // console.log("body", req.body)
+        // db.User.find({username: req.body.username})
+        //     .select('+pw')
+        //     .exec()
+        //     // if we have found a user
+        //     .then( users => {
+        //     // if there is not username in our db
+        //     console.log("USERS: ", users);
+        //     if(users.length < 1) {
+        //         return res.status(401).json({
+        //         message: "username/pw incorrect"
+        //         })
+        //     }
+        //     // we have an username in our db that matches what they gave us
+        //     // now we have to compare their hashed pw to what we have in our db
+        //     console.log("body", req.body);
+        //     console.log("hash", users[0].pw);
+        //     bcrypt.compare(req.body.pw, users[0].pw, (err, match) => {
+        //         console.log(match)
+        //         // If the compare function breaks, let them know
+        //         if(err){console.log(err);return res.status(500).json({err})}
+        //         // If match is true (their pw matches our db pw)
+        //         if(match){
+        //         console.log("MATCH: ", match)
+        //         // create a json web token
 
-                let user ={
-                    email: users[0].email,
-                    _id: users[0]._id
-                } 
-                jwt.sign(
-                    user,
-                    "waffles",
-                    {
-                    // its good practice to have an expiration amount for jwt tokens.
-                    expiresIn: "1h"
-                    },
-                    (err, signedJwt) => {
-                    res.status(200).json({
-                    message: 'Auth successful',
-                    user,
-                    signedJwt
-                    })
-                });
-                // the password provided does not match the password on file.
-                } else {
-                console.log("NOT A MATCH")
-                res.status(401).json({message: "Email/Password incorrect"})
-                }
-            })
+        //         let user ={
+        //             username: users[0].username,
+        //             _id: users[0]._id
+        //         } 
+        //         jwt.sign(
+        //             user,
+        //             "waffles",
+        //             {
+        //             // its good practice to have an expiration amount for jwt tokens.
+        //             expiresIn: "1h"
+        //             },
+        //             (err, signedJwt) => {
+        //             res.status(200).json({
+        //             message: 'Auth successful',
+        //             user,
+        //             signedJwt
+        //             })
+        //         });
+        //         // the pw provided does not match the pw on file.
+        //         } else {
+        //         console.log("NOT A MATCH")
+        //         res.status(401).json({message: "username/pw incorrect"})
+        //         }
+        //     })
         
         
-            })
-            .catch( err => {
-            console.log("OUTSIDE ERROR_")
-            console.log(err);
-            res.status(500).json({err})
-            })
-        },
+        //     })
+        //     .catch( err => {
+        //     console.log("OUTSIDE ERROR_")
+        //     console.log(err);
+        //     res.status(500).json({err})
+        //     })
+        // },
+    findAll: (req,res)=>{
+        console.log('display users')
+        db.User.find({firstName: "Paris"},(err, foundUsers) =>{
+            if (err) {
+                console.log('error retrieving users', err)
+            } res.json(foundUsers)
+        })
+    }
 }

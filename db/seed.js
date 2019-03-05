@@ -3,15 +3,10 @@ const
     db = require('../models')
 
 
-db.User.remove({})
-console.log()
-    .then(() => {
-        db.User.collection.insert(data)
-            .then(seededEntries => {
-                console.log(seededEntries)
-                process.exit()
-            })
+db.User.remove({}, (err) =>{
+    db.User.create(data, (err, users) =>{
+        if (err) {
+            console.log('cannot create user', err)
+        } console.log(users)
     })
-    .catch(err => {
-        console.log(err)
-    })
+});

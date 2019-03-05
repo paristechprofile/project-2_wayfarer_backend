@@ -1,25 +1,25 @@
 const 
     express = require('express'),
     router = express.Router(),
-    jwt = require('jsonwebtoken'),
+    // jwt = require('jsonwebtoken'),
     controllers = require('../controllers');
     
 //get all users
-router.get('/users', controllers.user.findAll)
+router.get('/all', controllers.user.findAll)
 
-//get one user
-router.get('/', controllers.user.findById)
+// //get one user
+// router.get('/', controllers.user.findById)
 
-//create user
+// //create user
 router.post('/signup', controllers.user.signup)
 
-//edit user profile
-router.put('/user/:id', controllers.user.editProfile)
+// //edit user profile
+// router.put('/user/:id', controllers.user.editProfile)
 
-//delete user
-router.delete('/user/:id', controllers.user.delete)
+// //delete user
+// router.delete('/user/:id', controllers.user.delete)
 
-//middleware to add token to request/response
+// //middleware to add token to request/response
 router.use((req, res, next) => {
     console.log('user.js route activated router.use')
     const bearerHeader = req.headers['authorization'];
