@@ -2,7 +2,7 @@ const
     express = require('express'),
     router = express.Router(),
     jwt = require('jsonwebtoken'),
-    controller = require('../controllers');
+    controllers = require('../controllers');
 
     router.use((req, res, next) => {
         console.log('user.js route activated router.use')
