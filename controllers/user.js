@@ -40,7 +40,7 @@ module.exports = {
     },
 
     /* 2. copied the below from git hub */
-        signup : (req, res) => {
+        signup: (req, res) => {
         console.log(req.body);
         // Check to see if username is already in db
         db.User.find({username: req.body.username})
@@ -135,7 +135,7 @@ module.exports = {
                 } 
                 jwt.sign(
                     user,
-                    "fantastic44",
+                    "fantastic4",
                     {
                     // its good practice to have an expiration amount for jwt tokens.
                     expiresIn: "1h"
