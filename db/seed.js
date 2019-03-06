@@ -24,12 +24,12 @@ const
 
 db.City.deleteMany({}, (err, cities) => {
     console.log('remove all cities');
-    
     //create the cities first
     db.City.create(city, (err, cities) => {
       if(err) { console.log(err); }
       console.log('created all cities');
       console.log(`created ${cities.length} cities`);
+      console.log(cities);
     
       /// create the users
       db.User.deleteMany({},(err, users) => {
