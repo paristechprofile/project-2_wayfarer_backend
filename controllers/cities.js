@@ -3,11 +3,15 @@ const
 
 module.exports = {
     findAll: (req,res)=>{
-    //     db.city.find({}, (err,cities)=>{
-    //         res.json(cities)
-    //     })
+        console.log('display cities triggered')
+        db.City.find({},(err, foundCities) =>{
+            if (err) {
+                console.log('error retrieving users', err)
+            } res.json(foundCities)
+        })
     },
 }
+
 // router.get('/cities', controllers.cities.findAll);
 
 // router.get('/cities/:id', controllers.cities.findById);
