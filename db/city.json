@@ -1,0 +1,14 @@
+[
+    {
+        "name": "San Francisco",
+        "state": "California",
+        "country": "US",
+        "image": "https://images.unsplash.com/photo-1506055670533-18d4a6d3f36f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1273&q=80"
+    },
+    {
+        "name": "Oakland",
+        "state": "California",
+        "country": "US",
+        "image": "https://images.unsplash.com/photo-1497033110244-bb22d252704e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1071&q=80"
+    }
+]
