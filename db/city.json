@@ -10,5 +10,11 @@
         "state": "California",
         "country": "US",
         "image": "https://images.unsplash.com/photo-1497033110244-bb22d252704e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1071&q=80"
+    },
+    {
+        "name": "Berkeley",
+        "state": "California",
+        "country": "US",
+        "image":"http://thecollegematchmaker.com/wp-content/uploads/2014/06/3523153307_e61203f1d1_o-1-1024x612.jpg"
     }
 ]
