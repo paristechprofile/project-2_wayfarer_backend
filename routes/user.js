@@ -12,6 +12,7 @@ router.get('/all', controllers.user.findAll)
 
 // //create user
 router.post('/signup', controllers.user.signup)
+router.post('/login', controllers.user.login)
 
 // //edit user profile
 // router.put('/user/:id', controllers.user.editProfile)
@@ -29,7 +30,7 @@ router.use((req, res, next) => {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken; 
-        let verified = jwt.verify(req.token, 'fantastic');
+        let verified = jwt.verify(req.token, 'fantastic4');
         console.log('here is the verified', verified)
         req.userId = verified._id
         next();

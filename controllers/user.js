@@ -19,6 +19,15 @@ const
 
   /* 1. add in crud functionality */
 module.exports = {
+    //find all users. Json in postman
+    findAll: (req,res)=>{
+        console.log('display users')
+        db.User.find({},(err, foundUsers) =>{
+            if (err) {
+                console.log('error retrieving users', err)
+            } res.json(foundUsers)
+        })
+    },
     findById: (req,res)=>{
         console.log('trigger Show', req.userId)
         if(req.userId){
@@ -67,7 +76,7 @@ module.exports = {
                     
                     jwt.sign(
                         user,
-                        "fantastic",
+                        "fantastic4",
                         {
                         // its good practice to have an expiration amount for jwt tokens.
                         expiresIn: "1h"
@@ -90,74 +99,65 @@ module.exports = {
             res.status(500).json({err})
             })
         },
-        // login: (req, res) => {
-        // console.log("LOGIN CALLED");
-        // // find the user in our user db
-        // console.log("body", req.body)
-        // db.User.find({username: req.body.username})
-        //     .select('+pw')
-        //     .exec()
-        //     // if we have found a user
-        //     .then( users => {
-        //     // if there is not username in our db
-        //     console.log("USERS: ", users);
-        //     if(users.length < 1) {
-        //         return res.status(401).json({
-        //         message: "username/pw incorrect"
-        //         })
-        //     }
-        //     // we have an username in our db that matches what they gave us
-        //     // now we have to compare their hashed pw to what we have in our db
-        //     console.log("body", req.body);
-        //     console.log("hash", users[0].pw);
-        //     bcrypt.compare(req.body.pw, users[0].pw, (err, match) => {
-        //         console.log(match)
-        //         // If the compare function breaks, let them know
-        //         if(err){console.log(err);return res.status(500).json({err})}
-        //         // If match is true (their pw matches our db pw)
-        //         if(match){
-        //         console.log("MATCH: ", match)
-        //         // create a json web token
+        
+        login: (req, res) => {
+        console.log("LOGIN CALLED");
+        // find the user in our user db
+        console.log("body", req.body)
+        db.User.find({username: req.body.username})
+            .select('+pw')
+            .exec()
+            // if we have found a user
+            .then( users => {
+            // if there is not username in our db
+            console.log("USERS: ", users);
+            if(users.length < 1) {
+                return res.status(401).json({
+                message: "username/pw incorrect"
+                })
+            }
+            // we have an username in our db that matches what they gave us
+            // now we have to compare their hashed pw to what we have in our db
+            console.log("body", req.body);
+            console.log("hash", users[0].pw);
+            bcrypt.compare(req.body.pw, users[0].pw, (err, match) => {
+                console.log(match)
+                // If the compare function breaks, let them know
+                if(err){console.log(err);return res.status(500).json({err})}
+                // If match is true (their pw matches our db pw)
+                if(match){
+                console.log("MATCH: ", match)
+                // create a json web token
 
-        //         let user ={
-        //             username: users[0].username,
-        //             _id: users[0]._id
-        //         } 
-        //         jwt.sign(
-        //             user,
-        //             "fantastic4",
-        //             {
-        //             // its good practice to have an expiration amount for jwt tokens.
-        //             expiresIn: "1h"
-        //             },
-        //             (err, signedJwt) => {
-        //             res.status(200).json({
-        //             message: 'Auth successful',
-        //             user,
-        //             signedJwt
-        //             })
-        //         });
-        //         // the pw provided does not match the pw on file.
-        //         } else {
-        //         console.log("NOT A MATCH")
-        //         res.status(401).json({message: "username/pw incorrect"})
-        //         }
-        //     })
-        
-        
-        //     })
-        //     .catch( err => {
-        //     console.log("OUTSIDE ERROR_")
-        //     console.log(err);
-        //     res.status(500).json({err})
-        //     })
-        // },
-    findAll: (req,res)=>{
-        console.log('display users')
-        db.User.find({firstName: "Paris"},(err, foundUsers) =>{
-            if (err) {
-                console.log('error retrieving users', err)
-            } res.json(foundUsers)
-        })
-    }
+                let user = {
+                    username: users[0].username,
+                    _id: users[0]._id
+                } 
+                jwt.sign(
+                    user,
+                    "fantastic44",
+                    {
+                    // its good practice to have an expiration amount for jwt tokens.
+                    expiresIn: "1h"
+                    },
+                    (err, signedJwt) => {
+                    res.status(200).json({
+                    message: 'Auth successful',
+                    user,
+                    signedJwt
+                    })
+                });
+                // the pw provided does not match the pw on file.
+                } else {
+                console.log("NOT A MATCH")
+                res.status(401).json({message: "username/pw incorrect"})
+                }
+            })
+            })
+            .catch( err => {
+            console.log("OUTSIDE ERROR_")
+            console.log(err);
+            res.status(500).json({err})
+            })
+        }
 }
