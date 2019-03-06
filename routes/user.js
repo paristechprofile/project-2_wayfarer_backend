@@ -5,22 +5,15 @@ const
     controllers = require('../controllers');
     
 //get all users
-router.get('/all', controllers.user.findAll)
+router.get('/user/all', controllers.user.findAll)
 
-// //get one user
-// router.get('/', controllers.user.findById)
 
-// //create user
+
+//create user
 router.post('/signup', controllers.user.signup)
 router.post('/login', controllers.user.login)
 
-// //edit user profile
-// router.put('/user/:id', controllers.user.editProfile)
-
-// //delete user
-// router.delete('/user/:id', controllers.user.delete)
-
-// //middleware to add token to request/response
+//middleware to add token to request/response
 router.use((req, res, next) => {
     console.log('user.js route activated router.use')
     const bearerHeader = req.headers['authorization'];
@@ -33,11 +26,18 @@ router.use((req, res, next) => {
         let verified = jwt.verify(req.token, 'fantastic4');
         console.log('here is the verified', verified)
         req.userId = verified._id
+        console.log(req.userId)
         next();
     }
     else {
         res.sendStatus(403);
     }
 })
+//get one user
+router.get('/', controllers.user.findById)
+
+router.put('/profile', controllers.user.editProfile)
+
+// router.delete('/user/:id', controllers.user.delete)
 
 module.exports = router;
