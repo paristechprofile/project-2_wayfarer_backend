@@ -14,7 +14,9 @@ const UserSchema = new Schema({
     },
     image: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    currentCity: String,
+    joinDate: Date
 })
 
 module.exports = mongoose.model('User', UserSchema)
