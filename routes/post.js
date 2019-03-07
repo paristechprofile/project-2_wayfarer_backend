@@ -4,8 +4,8 @@ const
     controllers = require('../controllers')
 
 // //get all posts by users. will show on profile page
- router.get('/', controllers.post.findAllPostsByUser);
- //.get('/',controllers.post.findAllPostsByCity)
+router.get('/', controllers.post.findAllPostsByUser);
+//.get('/',controllers.post.findAllPostsByCity)
 // router.get('/cities/:id/posts', controllers.post.findAllByCity);
 // router.post('/cities/:id/user/:id/post', controllers.post.createPost);
 // router.put('/post/:id', controllers.post.editPost);
