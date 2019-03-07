@@ -5,9 +5,7 @@ const
     controllers = require('../controllers');
     
 //get all users
-router.get('/user/all', controllers.user.findAll)
-
-
+router.get('/all', controllers.user.findAll)
 
 //create user
 router.post('/signup', controllers.user.signup)
@@ -33,11 +31,10 @@ router.use((req, res, next) => {
         res.sendStatus(403);
     }
 })
-//get one user
+
 router.get('/', controllers.user.findById)
+router.put('/', controllers.user.editProfile)
 
-router.put('/profile', controllers.user.editProfile)
 
-// router.delete('/user/:id', controllers.user.delete)
 
 module.exports = router;

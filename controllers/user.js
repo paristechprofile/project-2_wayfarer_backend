@@ -22,8 +22,9 @@ module.exports = {
     },
     findById: (req,res)=>{
         console.log('display single user triggered', req.userId)
-        if(req.userId){
-            db.User.findById(req.userId, (err, foundUser)=>{
+        let userId = req.userId;
+        if(userId){
+            db.User.find({_id: userId}, (err, foundUser)=>{
             res.json(foundUser)
             })
         } else {
@@ -163,8 +164,6 @@ module.exports = {
             res.json(updatedProfile);  
             console.log(`updated profile`, updatedProfile);
         });
-        // db.User.find({username: req.body.username}) example in todo
-
     }
     
 }
