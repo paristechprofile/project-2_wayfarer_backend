@@ -28,12 +28,9 @@ const
 });
 
 router.get('/', controllers.post.findAllPostsByUser);
+router.get('/:id', controllers.post.findSinglePost);
 
-
-
-
-
- //.get('/',controllers.post.findAllPostsByCity)
+//.get('/',controllers.post.findAllPostsByCity)
 // router.get('/cities/:id/posts', controllers.post.findAllByCity);
 //  router.post('/cities/:id/post', controllers.post.createPost);
 // router.put('/post/:id', controllers.post.editPost);
