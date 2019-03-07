@@ -63,7 +63,54 @@ module.exports = {
             res.json(allPosts)
         })
       },
-}
+      
+      findById: (req, res)=>{
+        let cityId = req.params.id;
+        db.City.find({_id: cityId})
+        .exec((err, myCity) => {
+            if (err) {
+              console.log('error retrieving city', err)
+            } 
+            res.json(myCity)
+        })
+      },
+      createPost: (req,res)=>{
+          console.log('triggered create', req.body)
+        let cityId = req.params.id;
+        let userId = req.userId;
+
+        let newPost = new db.Post({
+            text: req.body.text,
+            date: req.body.date,
+            city: cityId
+            }); 
+            console.log("user id is ", userId)
+        db.User.find({_id: userId}, (err, foundUser)=>{
+          if(err){ console.log('cant find user',err) }
+          newPost.author = foundUser[0]
+          console.log("city id is : ", cityId)
+         
+        db.City.find({ _id: cityId}, (err, foundCity) => {
+            if (err) { 
+                console.log('cant find city',err) 
+            }
+           
+            console.log("the foud city is :::",foundCity); 
+            newPost.city = foundCity[0];
+            console.log( "the city id is :",newPost.city )
+            console.log('newPost:', newPost)
+    
+            newPost.save((err, savedPost) => {
+                if (err) { console.log("can't save post to database",err) }
+                console.log("saved post:", savedPost);
+                console.log('saved the post!!!!');
+            });
+
+            res.json(newPost);
+        });
+
+    });// db.user
+}};
 
 
 // router.get('/cities', controllers.cities.findAll);
