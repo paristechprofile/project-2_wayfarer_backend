@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'))
 
-app.use('/', userRoutes)
+app.use('/user', userRoutes)
 app.use('/cities', citiesRoutes)
 app.use('/post', postRoutes)
 
