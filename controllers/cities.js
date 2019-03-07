@@ -49,7 +49,20 @@ module.exports = {
             if(err) { throw err; }
             res.json(deletedCity);
           });
-    }
+    },
+    getPosts: (req,res) => {
+        console.log('display posts for a specific city')
+        let city = req.params.id;
+        console.log(req.body);
+        db.Post.find({ city: city })
+          //.populate('city')
+          .exec((err, allPosts) => {
+            if (err) {
+              console.log('error retrieving posts', err)
+            } 
+            res.json(allPosts)
+        })
+      },
 }
 
 

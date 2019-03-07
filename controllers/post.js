@@ -4,7 +4,7 @@ const
 module.exports = {
   findAllPostsByUser: (req,res) => {
     console.log('display posts for a specific user')
-    let userId = req.body.userId;
+    let userId = req.userId;
     console.log(req.body);
     db.Post.find({ author: userId })
       .populate('author')
@@ -13,20 +13,6 @@ module.exports = {
           console.log('error retrieving posts', err)
         } 
         res.json(foundPosts)
-    })
-  },
-
-  findAllPostsByCity: (req,res) => {
-    console.log('display posts for a specific city')
-    let cityId = req.body.city;
-    console.log(req.body);
-    db.Post.find({ city: cityId })
-      .populate('city')
-      .exec((err, foundCities) => {
-        if (err) {
-          console.log('error retrieving posts', err)
-        } 
-        res.json(foundCities)
     })
   },
 
