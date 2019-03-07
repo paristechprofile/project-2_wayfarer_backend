@@ -28,12 +28,32 @@ module.exports = {
         } 
         res.json(selectedPost)
     })
+  },
+  editPost: (req,res) => {
+    console.log('display one post for a specific user')
+    let postId = req.params.id;
+    console.log(postId);
+    db.Post.findOneAndUpdate({ _id: postId}, req.body, (err,updatedPost) => {
+      if (err) {
+        console.log('error editing posts', err)
+      } 
+      res.json(updatedPost)
+    })
+  },
+  deletePost: (req,res) => {
+    console.log('delete post triggered')
+    let postId = req.params.id;
+    console.log(postId);
+    db.Post.findOneAndDelete({ _id: postId}, (err,deletedPost) => {
+      if (err) {
+        console.log('error deleting posts', err)
+      } 
+      res.json(deletedPost)
+    })
   }
-
-  }
+}
 
 // router.get('/user/:id/posts', controllers.post.findAllByUser);
 // router.get('/cities/:id/posts', controllers.post.findAllByCity);
 
 //router.post('/cities/:id/user/:id/post', controllers.post.createPost);
-// router.put('/post/:id', con

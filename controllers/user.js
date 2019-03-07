@@ -65,7 +65,6 @@ module.exports = {
                     username: newUser.username,
                     _id: newUser._id
                 } 
-                
                 jwt.sign(
                     user,
                     "fantastic4",
