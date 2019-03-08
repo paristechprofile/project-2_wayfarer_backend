@@ -16,10 +16,7 @@ const UserSchema = new Schema({
     firstName: String,
     lastName: String,
     currentCity: String,
-    joinDate: {
-        type: Date,
-        default: Date.now
-    }
+    joinDate: Date
 })
 
 module.exports = mongoose.model('User', UserSchema)

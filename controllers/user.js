@@ -62,14 +62,9 @@ module.exports = {
                 // if(err){ return res.status(500).json({err})}
                 // we send our new data back to user or whatever you want to do.
                 let user ={
-                    _id: newUser._id,
                     username: newUser.username,
-                    image: newUser.image,
-                    firstName: newUser.firstName,
-                    lastName: newUser.lastName,
-                    currentCity: newUser.currentCity,
-                    joinDate: newUser.joinDate
-                }   
+                    _id: newUser._id
+                } 
                 jwt.sign(
                     user,
                     "fantastic4",
@@ -126,13 +121,8 @@ module.exports = {
             // create a json web token
 
             let user = {
-                _id: users[0]._id,
                 username: users[0].username,
-                image: users[0].image,
-                firstName: users[0].firstName,
-                lastName: users[0].lastName,
-                currentCity: users[0].currentCity,
-                joinDate: users[0].joinDate
+                _id: users[0]._id
             } 
             jwt.sign(
                 user,
@@ -147,7 +137,6 @@ module.exports = {
                 user,
                 signedJwt
                 })
-                console.log(user)
             });
             // the pw provided does not match the pw on file.
             } else {
