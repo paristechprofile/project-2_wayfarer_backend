@@ -2,21 +2,37 @@
     {
         "username": "ptaylor",
         "pw": "fantastic4",
-        "firstName": "Paris"
+        "firstName": "Paris",
+        "image": "(this will be a url. seed file",
+        "lastName": "Taylor",
+        "currentCity": "SF",
+        "joinDate": ""
     },
     {
         "username": "JJ",
         "pw": "123",
-        "firstName": "John"
+        "firstName": "John",
+        "image": "",
+        "lastName": "Jolivette",
+        "currentCity": "SF",
+        "joinDate": ""
     },
     {
         "username": "tteaze",
         "pw": "password",
-        "firstName": "Tiffany"
+        "firstName": "Tiffany",
+        "image": "",
+        "lastName": "Teaze",
+        "currentCity": "SF",
+        "joinDate": ""
     },
     {
         "username": "nassima",
         "pw": "123",
-        "firstName": "Nassima"
+        "firstName": "Nassima",
+        "image": "",
+        "lastName": "(This last name is in the seed file",
+        "currentCity": "SF",
+        "joinDate": ""
     }
 ]
