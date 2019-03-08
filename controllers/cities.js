@@ -56,6 +56,7 @@ module.exports = {
         console.log(req.body);
         db.Post.find({ city: city })
           //.populate('city')
+          .populate('user')
           .exec((err, allPosts) => {
             if (err) {
               console.log('error retrieving posts', err)
