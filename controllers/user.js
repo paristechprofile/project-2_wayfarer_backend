@@ -62,10 +62,11 @@ module.exports = {
                 // if(err){ return res.status(500).json({err})}
                 // we send our new data back to user or whatever you want to do.
                 let user ={
+                    _id: newUser._id,
                     username: newUser.username,
-                    _id: newUser._id
+                    joinDate: newUser.joinDate,
+                    
                 } 
-                
                 jwt.sign(
                     user,
                     "fantastic4",
@@ -122,8 +123,14 @@ module.exports = {
             // create a json web token
 
             let user = {
+                _id: users[0]._id,
                 username: users[0].username,
-                _id: users[0]._id
+                image: users[0].image,
+                firstName: users[0].firstName,
+                lastName: users[0].lastName,
+                lastName: users[0].lastName,
+                currentCity: users[0].currentCity,
+                joinDate: users[0].joinDate                
             } 
             jwt.sign(
                 user,

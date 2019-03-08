@@ -29,6 +29,9 @@ const
 
 router.get('/', controllers.post.findAllPostsByUser);
 router.get('/:id', controllers.post.findSinglePost);
+router.put('/:id', controllers.post.editPost);
+router.delete('/:id', controllers.post.deletePost);
+// router.delete('/post/:id', controllers.post.deletePost);
 
 //.get('/',controllers.post.findAllPostsByCity)
 // router.get('/cities/:id/posts', controllers.post.findAllByCity);
