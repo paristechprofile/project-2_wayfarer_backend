@@ -56,7 +56,10 @@ module.exports = {
                 // we are creating a User object with their username and OUR hashed pw
                 db.User.create({
                 username: req.body.username,
-                pw: hash
+                pw: hash,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                currentCity: req.body.currentCity
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                 // if(err){ return res.status(500).json({err})}
