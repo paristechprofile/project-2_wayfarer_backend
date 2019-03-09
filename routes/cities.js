@@ -7,7 +7,7 @@ const
 router.get('/', controllers.cities.findAll);
 router.get('/:id', controllers.cities.findById);
 router.get('/:id/posts', controllers.cities.getPosts);
-router.post('/:id/posts', controllers.cities.createPost);
+
 
 router.use((req, res, next) => {
     console.log('user.js route activated router.use')
@@ -28,7 +28,7 @@ router.use((req, res, next) => {
         res.sendStatus(403);
     }
 })
-
+router.post('/:id/posts', controllers.cities.createPost);
 
 // router.post('/', controllers.cities.createCity);//not needed
 // router.put('/:id', controllers.cities.editCity);//not needed

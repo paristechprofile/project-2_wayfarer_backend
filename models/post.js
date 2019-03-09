@@ -5,7 +5,7 @@ const
     City = require('./City');
 
 const PostSchema = new Schema({
-    date: Date,
+    date: { type: Date, default: Date.now },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

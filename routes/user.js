@@ -32,7 +32,7 @@ router.use((req, res, next) => {
 
 router.get('/', controllers.user.findById)
 router.put('/', controllers.user.editProfile)
-// router.get('/posts', controllers.user.findAllPosts)
+router.get('/:id/posts', controllers.post.findAllPostsByUser)
 
 
 
