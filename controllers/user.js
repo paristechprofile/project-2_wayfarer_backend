@@ -166,14 +166,12 @@ module.exports = {
     editProfile: (req, res) => {
         console.log('edit profile controller triggered');
         let userId = req.userId
-        console.log(userId);
-        db.User.findOneAndUpdate({_id: userId}, req.body, (err, updatedProfile) => {
-            if (err){
-                console.log(`Sorry, there was an error editing your profile`, err);
-            } 
-            res.json(updatedProfile);  
-            console.log(`updated profile`, updatedProfile);
-        });
+        console.log(`line 169 user.js`, userId);
+        db.User.findOneAndUpdate({_id: userId}, req.body, (err, oldProfile) => {
+            console.log(`updated profile`, oldProfile);
+            db.User.findOne({_id: userId}, (err,data) =>
+                res.json(data)
+            ) 
+        }); 
     }
-    
 }
