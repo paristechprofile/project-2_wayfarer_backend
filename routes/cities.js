@@ -7,11 +7,13 @@ const
 router.get('/', controllers.cities.findAll);
 router.get('/:id', controllers.cities.findById);
 router.get('/:id/posts', controllers.cities.getPosts);
+router.post('/:id/posts', controllers.cities.createPost);
 
 router.use((req, res, next) => {
-    console.log('user.js route activated router.use')
+    console.log(req);
+    console.log('city.js route activated router.use')
     const bearerHeader = req.headers['authorization'];
-    console.log('user.js triggered token check', bearerHeader)
+    console.log('city.js triggered token check', bearerHeader)
 
     if(typeof bearerHeader !== 'undefined'){
         const bearer = bearerHeader.split(' ');
@@ -28,7 +30,7 @@ router.use((req, res, next) => {
     }
 })
 
-router.post('/:id/posts', controllers.cities.createPost);
+
 
 // router.post('/', controllers.cities.createCity);//not needed
 // router.put('/:id', controllers.cities.editCity);//not needed
