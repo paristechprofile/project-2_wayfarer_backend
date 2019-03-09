@@ -5,7 +5,8 @@ module.exports = {
   findAllPostsByUser: (req,res) => {
     console.log('display all posts for a specific user')
     let userId = req.userId;
-    console.log(req.body);
+
+    console.log(userId)
     db.Post.find({ author: userId })
       .populate('author')
       .exec((err, foundPosts) => {

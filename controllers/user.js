@@ -56,7 +56,10 @@ module.exports = {
                 // we are creating a User object with their username and OUR hashed pw
                 db.User.create({
                 username: req.body.username,
-                pw: hash
+                pw: hash,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                currentCity: req.body.currentCity
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                 // if(err){ return res.status(500).json({err})}
@@ -163,14 +166,13 @@ module.exports = {
     editProfile: (req, res) => {
         console.log('edit profile controller triggered');
         let userId = req.userId
-        console.log(userId);
-        db.User.findOneAndUpdate({_id: userId}, req.body, (err, updatedProfile) => {
-            if (err){
-                console.log(`Sorry, there was an error editing your profile`, err);
-            } 
-            res.json(updatedProfile);  
-            console.log(`updated profile`, updatedProfile);
-        });
+        console.log(`line 169 user.js`, userId);
+        db.User.findOneAndUpdate({_id: userId}, req.body, (err, oldProfile) => {
+            console.log(`updated profile`, oldProfile);
+            console.log(req.body);
+            db.User.findOne({_id: userId}, (err,data) =>
+                res.json(data)
+            ) 
+        }); 
     }
-    
 }

@@ -6,8 +6,6 @@ const
     
 //get all users
 router.get('/all', controllers.user.findAll)
-
-//create user
 router.post('/signup', controllers.user.signup)
 router.post('/login', controllers.user.login)
 
