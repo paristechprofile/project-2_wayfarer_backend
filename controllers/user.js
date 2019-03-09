@@ -3,13 +3,6 @@ const
     db = require('../models'),
     jwt = require('jsonwebtoken');
 
-//edit user profile
-// router.put('/user/:id', controllers.user.editProfile)
-
-//delete user
-// router.delete('/user/:id', controllers.user.delete)
-
-
 module.exports = {
     
     findAll: (req,res)=>{
@@ -31,7 +24,6 @@ module.exports = {
             res.json('Unable to retrieve user with that Id')
         }
     },
-
     signup: (req, res) => {
     console.log(req.body);
     // Check to see if username is already in db
