@@ -169,7 +169,6 @@ module.exports = {
         console.log(`line 169 user.js`, userId);
         db.User.findOneAndUpdate({_id: userId}, req.body, (err, oldProfile) => {
             console.log(`updated profile`, oldProfile);
-            console.log(req.body);
             db.User.findOne({_id: userId}, (err,data) =>
                 res.json(data)
             ) 
