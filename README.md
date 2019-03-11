@@ -25,14 +25,13 @@ We began by wire-framing out our database structure, our component and dom tree,
 
 Our next goal was to psuedo code our backend routes and controllers and seed the database to determine if our json responses were behaving as expected
 <br />
-After we had rendered everything, we started to implement the CRUD methods onto our front end application. As we worked on our application's functionality, we also paid attention to the styling of the page and structured our grids and responsiveness as we went coded. We used the project sprints as a guideline for what features we needed to include and how users should interact with them.
+
 ## Challenges and Wins
 Some challenges for us were:
 * User validation
 * Combining React.js with Bootstrap
 * City Container and Profile Container componenets
-
-React.js proved to be the source of a lot of difficulty as we first started this project, because of the top to bottom data flow and React's separation of concerns. It is important to make sure components are independent, but as our application grew, so did the number of files and the information we had to keep track of. Component states and functions often had to be passed down and it was sometimes hard to keep track of everything.
+\
 <br />
 Finishing the backend CRUD functionality as well as ensuring information persists beyond components changing, were big wins for our team, 
 <br />
