@@ -1,8 +1,8 @@
 const 
-    data = require('./usermodel'), // we may need to change data to user
+    data = require('./user'), // we may need to change data to user
     db = require('./models'),
-    city = require('./citymodel'),
-    post = require('./postmodel')
+    city = require('./city'),
+    post = require('./post')
 
 
 // db.User.remove({}, (err) =>{
