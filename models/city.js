@@ -8,4 +8,4 @@ const CitySchema = new Schema({
     image: String
 })
 
-module.exports = mongoose.model('city', CitySchema)
+module.exports = mongoose.model('City', CitySchema)
