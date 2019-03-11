@@ -1,6 +1,6 @@
 const 
     data = require('./user'), // we may need to change data to user
-    db = require('./models'),
+    db = require('../models'),
     city = require('./city'),
     post = require('./post')
 
