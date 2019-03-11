@@ -1,8 +1,8 @@
 const 
     mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-    User = require('./user');
-    City = require('./city');
+    User = require('./usermodel');
+    City = require('./citymodel');
 
 const PostSchema = new Schema({
     date: { type: Date, default: Date.now },
