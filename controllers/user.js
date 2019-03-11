@@ -61,7 +61,7 @@ module.exports = {
                 // if(err){ return res.status(500).json({err})}
                 // we send our new data back to user or whatever you want to do.
                 let user ={
-                    _id: newUser._id,
+                    // _id: newUser._id,
                     username: newUser.username,
                     joinDate: newUser.joinDate,
                     
