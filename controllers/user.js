@@ -51,7 +51,11 @@ module.exports = {
                 pw: hash,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                currentCity: req.body.currentCity
+                currentCity: req.body.currentCity,
+                joinDate: { 
+                    type: Date, 
+                    default: Date.now 
+                }
                 }, (err, newUser) => {
                     console.log('here is the result',newUser)
                 // if(err){ return res.status(500).json({err})}

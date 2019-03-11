@@ -74,7 +74,6 @@ module.exports = {
     })
   },
   createPost: (req,res)=>{
-  // console.log('triggered create', req.body)
   let cityId = req.params.id;
   let userId = req.userId; 
   let newPost = new db.Post({
@@ -82,28 +81,20 @@ module.exports = {
     date: req.body.date,
     author: userId,
     city: cityId
-    }); 
-  // console.log("user id is ", userId)
-  db.User.find({_id: userId}, (err, foundUser)=>{
-    if(err){ console.log('cant find user in cities.js',err) }
-    newPost.author = foundUser[0]
-    // console.log(`HERE'S THE FOUND USER`, foundUser[0])
-    // console.log("city id is : ", cityId)
-  db.City.find({ _id: cityId}, (err, foundCity) => {
-    if (err) { 
-      console.log('cant find city',err) 
-    }
-    // console.log("the foud city is :::",foundCity); 
-    newPost.city = foundCity[0];
-    // console.log( "the city id is :",newPost.city )
-    // console.log('newPost:', newPost)
-  });
-  newPost.save((err, savedPost) => {
-    if (err) { 
-      console.log("can't save post to database",err) 
-    }
-    // console.log("saved post:", savedPost);
-    // console.log('saved the post!!!!');
+  }); 
+    db.User.find({_id: userId}, (err, foundUser)=>{
+      if(err){ console.log('cant find user in cities.js',err) }
+      newPost.author = foundUser[0]
+    db.City.find({ _id: cityId}, (err, foundCity) => {
+      if (err) { 
+        console.log('cant find city',err) 
+      }
+      newPost.city = foundCity[0];
+    });
+    newPost.save((err, savedPost) => {
+      if (err) { 
+        console.log("can't save post to database",err) 
+      }
     });
       res.json(newPost);
   });
