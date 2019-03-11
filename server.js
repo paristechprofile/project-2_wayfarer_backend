@@ -19,4 +19,4 @@ app.use('/user', userRoutes)
 app.use('/cities', citiesRoutes)
 app.use('/post', postRoutes)
 
-app.listen(3001, () => console.log('Listening on port 3001'))
+app.listen(process.env.PORT || 3001, () => console.log('Listening on port 3001'))
